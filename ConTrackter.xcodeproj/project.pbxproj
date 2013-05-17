@@ -16,6 +16,10 @@
 		27C9BB821746ACC8005E87E8 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 27C9BB811746ACC8005E87E8 /* Default.png */; };
 		27C9BB841746ACC8005E87E8 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27C9BB831746ACC8005E87E8 /* Default@2x.png */; };
 		27C9BB861746ACC8005E87E8 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27C9BB851746ACC8005E87E8 /* Default-568h@2x.png */; };
+		27C9BB941746BA70005E87E8 /* CTWorkerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C9BB931746BA70005E87E8 /* CTWorkerModel.m */; };
+		27C9BB971746BAEA005E87E8 /* CTShiftModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C9BB961746BAEA005E87E8 /* CTShiftModel.m */; };
+		27C9BB9A1746BB64005E87E8 /* CTWorkerTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C9BB991746BB64005E87E8 /* CTWorkerTableViewController.m */; };
+		27C9BBA11746BEFD005E87E8 /* CTHoursTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C9BBA01746BEFD005E87E8 /* CTHoursTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +36,14 @@
 		27C9BB811746ACC8005E87E8 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		27C9BB831746ACC8005E87E8 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		27C9BB851746ACC8005E87E8 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		27C9BB921746BA70005E87E8 /* CTWorkerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTWorkerModel.h; sourceTree = "<group>"; };
+		27C9BB931746BA70005E87E8 /* CTWorkerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTWorkerModel.m; sourceTree = "<group>"; };
+		27C9BB951746BAEA005E87E8 /* CTShiftModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTShiftModel.h; sourceTree = "<group>"; };
+		27C9BB961746BAEA005E87E8 /* CTShiftModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTShiftModel.m; sourceTree = "<group>"; };
+		27C9BB981746BB64005E87E8 /* CTWorkerTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTWorkerTableViewController.h; sourceTree = "<group>"; };
+		27C9BB991746BB64005E87E8 /* CTWorkerTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTWorkerTableViewController.m; sourceTree = "<group>"; };
+		27C9BB9F1746BEFD005E87E8 /* CTHoursTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTHoursTableViewController.h; sourceTree = "<group>"; };
+		27C9BBA01746BEFD005E87E8 /* CTHoursTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTHoursTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +90,14 @@
 		27C9BB751746ACC8005E87E8 /* ConTrackter */ = {
 			isa = PBXGroup;
 			children = (
+				27C9BB981746BB64005E87E8 /* CTWorkerTableViewController.h */,
+				27C9BB991746BB64005E87E8 /* CTWorkerTableViewController.m */,
+				27C9BB921746BA70005E87E8 /* CTWorkerModel.h */,
+				27C9BB931746BA70005E87E8 /* CTWorkerModel.m */,
+				27C9BB9F1746BEFD005E87E8 /* CTHoursTableViewController.h */,
+				27C9BBA01746BEFD005E87E8 /* CTHoursTableViewController.m */,
+				27C9BB951746BAEA005E87E8 /* CTShiftModel.h */,
+				27C9BB961746BAEA005E87E8 /* CTShiftModel.m */,
 				27C9BB7E1746ACC8005E87E8 /* CTAppDelegate.h */,
 				27C9BB7F1746ACC8005E87E8 /* CTAppDelegate.m */,
 				27C9BB761746ACC8005E87E8 /* Supporting Files */,
@@ -167,6 +187,10 @@
 			files = (
 				27C9BB7C1746ACC8005E87E8 /* main.m in Sources */,
 				27C9BB801746ACC8005E87E8 /* CTAppDelegate.m in Sources */,
+				27C9BB941746BA70005E87E8 /* CTWorkerModel.m in Sources */,
+				27C9BB971746BAEA005E87E8 /* CTShiftModel.m in Sources */,
+				27C9BB9A1746BB64005E87E8 /* CTWorkerTableViewController.m in Sources */,
+				27C9BBA11746BEFD005E87E8 /* CTHoursTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
