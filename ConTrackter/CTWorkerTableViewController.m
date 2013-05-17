@@ -9,12 +9,12 @@
 #import "CTWorkerTableViewController.h"
 #import "CTWorkerModel.h"
 
-@interface CTViewController ()
+@interface CTWorkerTableViewController ()
 @property CTWorkerModel *cTWorkerModelHandle;
 
 @end
 
-@implementation CTViewController
+@implementation CTWorkerTableViewController
 
 @synthesize cTWorkerModelHandle = _cTWorkerModelHandle;
 

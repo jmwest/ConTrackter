@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CTViewController : UITableViewController
+@interface CTWorkerTableViewController : UITableViewController
 
 @end
