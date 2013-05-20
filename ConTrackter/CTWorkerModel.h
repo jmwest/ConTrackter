@@ -10,9 +10,10 @@
 
 @interface CTWorkerModel : NSObject
 
-@property (strong, nonatomic) NSMutableArray *workerNameArray;
-@property (strong, nonatomic) NSString *additionalWorkerNameString;
+- (id)initWithName:(NSString *)nameString andYear:(NSInteger *)inGradYear;
 
--(void)addWorkerNameToArray;
+@property (strong, nonatomic) NSString *workerNameString;
+@property (assign, nonatomic) NSInteger *workerGradYear;
+@property (strong, nonatomic) NSMutableArray *workerHoursArray;
 
 @end

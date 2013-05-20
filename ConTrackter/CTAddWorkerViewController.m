@@ -33,14 +33,16 @@
 
 - (void) saveAndSendWorkerNameToTable
 {
-    if ([self.view.addWorkerNameTextField.text isEqualToString:@""])
+    if ([self.view.addWorkerNameTextField.text length] == 0)
     {
         
     }
     else
     {
-        NSString *additionalWorkerNameString = self.view.addWorkerNameTextField.text;
-        [self.delegate returnWorkerNameMethod:self workerNameToPassBack:additionalWorkerNameString];
+        CTWorkerModel *acquiredNameAndYear = [[CTWorkerModel alloc] initWithName:self.view.addWorkerNameTextField.text andYear: (NSInteger *) 2016];
+        [self.delegate returnWorkerNameMethod:self andWorkerInformationClass:acquiredNameAndYear];
+        
+        [self.navigationController popViewControllerAnimated:YES];
     }
 }
 

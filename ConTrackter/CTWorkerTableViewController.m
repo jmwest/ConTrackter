@@ -8,17 +8,16 @@
 
 #import "CTWorkerTableViewController.h"
 #import "CTWorkerModel.h"
-#import "CTAddWorkerViewController.h"
 
 @interface CTWorkerTableViewController ()
-@property CTWorkerModel *cTWorkerModelHandle;
 @property CTAddWorkerViewController *cTAddWorkerViewController;
 
 @end
 
 @implementation CTWorkerTableViewController
 
-@synthesize cTWorkerModelHandle = _cTWorkerModelHandle;
+@synthesize workerInfoArray = _workerInfoArray;
+@synthesize cTAddWorkerViewController = _cTAddWorkerViewController;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -38,11 +37,16 @@
     // self.clearsSelectionOnViewWillAppear = NO;
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    //self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.navigationItem.leftBarButtonItem = self.editButtonItem;
     UIBarButtonItem *barButtonAdd = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addWorkerNameToArrayControllerMethod)];
     self.navigationItem.rightBarButtonItem = barButtonAdd;
     [self.navigationItem setTitle:@"Workers"];
+
+    self.workerInfoArray = [[NSMutableArray alloc] init];
     
+    //CTWorkerModel *myWorker = [[CTWorkerModel alloc] initWithName:@"Test" andYear:(NSInteger *) 2015];
+    //[self.workerInfoArray addObject:myWorker];
+    //NSLog(@"%d", [self.workerInfoArray count]);
 }
 
 - (void)didReceiveMemoryWarning
@@ -60,15 +64,26 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.cTWorkerModelHandle.workerNameArray count];
+    NSLog(@"%d", [self.workerInfoArray count]);
+    return [self.workerInfoArray count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
     // Configure the cell...
+    CTWorkerModel *myWorker = [self.workerInfoArray objectAtIndex:indexPath.row];
+    cell.textLabel.text = myWorker.workerNameString;
+    
+    
+    //self.workerNameToAddString = [self.workerInfoArray objectAtIndex:indexPath.row];
+    //cell.textLabel.text = self.workerNameToAddString;
+    //[self.cTWorkerModelHandle.workerNameArray addObject:@"Test"];
+    //cell.textLabel.text = self.workerNameToAddString;
     
     return cell;
 }
@@ -88,13 +103,29 @@
 
 - (void)addWorkerNameToArrayControllerMethod
 {
-    CTAddWorkerViewController *_CTAddWorkerViewController = [[CTAddWorkerViewController alloc] init];
-    [self.navigationController pushViewController:_CTAddWorkerViewController animated:YES];
+    CTAddWorkerViewController *aWVC = [[CTAddWorkerViewController alloc] init];
+    [aWVC setDelegate:self];
+    [self.navigationController pushViewController:aWVC animated:YES];
 }
 
-- (void)returnWorkerNameMethod:(CTAddWorkerViewController *)controller workerNameToPassBack:(NSString *)workerNameString
+- (void)returnWorkerNameMethod:(CTAddWorkerViewController *)controller andWorkerInformationClass:(CTWorkerModel *)workerNameAndGradYear
 {
+    [self.workerInfoArray addObject:workerNameAndGradYear];
+    NSLog(@"%d", [self.workerInfoArray count]);
+    [self displayNewWorkerNameInTable];
+}
+
+- (void)displayNewWorkerNameInTable
+{
+   // self.workerNameToAddString = [self.cTWorkerModelHandle.workerNameArray lastObject];
     
+}
+
+- (void)viewWillAppear:(BOOL) animated
+{
+    [super viewWillAppear:animated];
+    
+    [[self tableView] reloadData];
 }
 
 @end

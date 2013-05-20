@@ -10,12 +10,19 @@
 
 @implementation CTWorkerModel
 
-@synthesize workerNameArray = _workerNameArray;
-@synthesize additionalWorkerNameString = _additionalWorkerNameString;
+@synthesize workerNameString = _workerNameString;
+@synthesize workerGradYear = _workerGradYear;
+@synthesize workerHoursArray = _workerHoursArray;
 
--(void)addWorkerNameToArray
+- (id) initWithName:(NSString *)nameString andYear:(NSInteger *)inGradYear
 {
-    [self.workerNameArray addObject:self.additionalWorkerNameString];
+    self = [super init];
+    if (self) {
+        self.workerNameString = nameString;
+        self.workerGradYear = inGradYear;
+        self.workerHoursArray = [[NSMutableArray alloc] init];
+    }
+    return self;
 }
 
 @end

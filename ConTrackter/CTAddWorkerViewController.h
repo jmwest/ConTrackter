@@ -8,19 +8,20 @@
 
 #import <UIKit/UIKit.h>
 #import "CTAddWorkerView.h"
+#import "CTWorkerModel.h"
 
 @class CTAddWorkerViewController;
 
-@protocol returnWorkerNameToTableDelegate <NSObject>
+@protocol CTAddWorkerViewControlDelegate <NSObject>
 
-- (void)returnWorkerNameMethod:(CTAddWorkerViewController *) controller workerNameToPassBack:(NSString *) workerNameString;
+- (void)returnWorkerNameMethod:(CTAddWorkerViewController *) controller andWorkerInformationClass:(CTWorkerModel *) workerNameAndGradYear;
 
 @end
 
 @interface CTAddWorkerViewController : UIViewController <UITextFieldDelegate>
 
 @property (strong, nonatomic) CTAddWorkerView *view;
-@property (weak, nonatomic) id <returnWorkerNameToTableDelegate> delegate;
+@property (weak, nonatomic) id <CTAddWorkerViewControlDelegate> delegate;
 - (void) saveAndSendWorkerNameToTable;
 
 @end

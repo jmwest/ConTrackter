@@ -9,8 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "CTAddWorkerViewController.h"
 
-@interface CTWorkerTableViewController : UITableViewController <returnWorkerNameToTableDelegate>
+@interface CTWorkerTableViewController : UITableViewController <CTAddWorkerViewControlDelegate>
 
+@property (strong, nonatomic) NSMutableArray *workerInfoArray;
+@property (strong, nonatomic) NSString *workerNameToAddString;
 - (void)addWorkerNameToArrayControllerMethod;
+- (void)displayNewWorkerNameInTable;
 
 @end
