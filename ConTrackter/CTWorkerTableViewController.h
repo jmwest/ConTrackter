@@ -1,5 +1,5 @@
 //
-//  CTViewController.h
+//  CTWorkerTableViewController.h
 //  ConTrackter
 //
 //  Created by John West on 5/17/13.
@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CTAddWorkerViewController.h"
 
-@interface CTWorkerTableViewController : UITableViewController
+@interface CTWorkerTableViewController : UITableViewController <returnWorkerNameToTableDelegate>
+
+- (void)addWorkerNameToArrayControllerMethod;
 
 @end

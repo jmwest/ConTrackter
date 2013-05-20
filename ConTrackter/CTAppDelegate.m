@@ -8,18 +8,21 @@
 
 #import "CTAppDelegate.h"
 #import "CTWorkerTableViewController.h"
+#import "CTAddWorkerViewController.h"
 
 @implementation CTAppDelegate
 
-@synthesize viewController=_viewController;
+//@synthesize viewController=_viewController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
-    self.viewController = [[CTWorkerTableViewController alloc] init];
-    self.window.rootViewController = self.viewController;
+    CTWorkerTableViewController *tableViewController = [[CTWorkerTableViewController alloc] init];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController: tableViewController];
+    self.window.rootViewController = navigationController;
     [self.window makeKeyAndVisible];
     return YES;
 }

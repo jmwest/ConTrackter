@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		27B0DA1D1749CF53005D513A /* CTAddWorkerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B0DA1C1749CF53005D513A /* CTAddWorkerViewController.m */; };
+		27B0DA231749DBC2005D513A /* CTAddWorkerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B0DA221749DBC2005D513A /* CTAddWorkerView.m */; };
+		27B0DA26174A50EE005D513A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B0DA25174A50EE005D513A /* QuartzCore.framework */; };
 		27C9BB701746ACC8005E87E8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27C9BB6F1746ACC8005E87E8 /* UIKit.framework */; };
 		27C9BB721746ACC8005E87E8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27C9BB711746ACC8005E87E8 /* Foundation.framework */; };
 		27C9BB741746ACC8005E87E8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27C9BB731746ACC8005E87E8 /* CoreGraphics.framework */; };
@@ -23,6 +26,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		27B0DA1B1749CF53005D513A /* CTAddWorkerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTAddWorkerViewController.h; sourceTree = "<group>"; };
+		27B0DA1C1749CF53005D513A /* CTAddWorkerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTAddWorkerViewController.m; sourceTree = "<group>"; };
+		27B0DA211749DBC2005D513A /* CTAddWorkerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTAddWorkerView.h; sourceTree = "<group>"; };
+		27B0DA221749DBC2005D513A /* CTAddWorkerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTAddWorkerView.m; sourceTree = "<group>"; };
+		27B0DA25174A50EE005D513A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		27C9BB6B1746ACC8005E87E8 /* ConTrackter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ConTrackter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27C9BB6F1746ACC8005E87E8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		27C9BB711746ACC8005E87E8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -51,6 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27B0DA26174A50EE005D513A /* QuartzCore.framework in Frameworks */,
 				27C9BB701746ACC8005E87E8 /* UIKit.framework in Frameworks */,
 				27C9BB721746ACC8005E87E8 /* Foundation.framework in Frameworks */,
 				27C9BB741746ACC8005E87E8 /* CoreGraphics.framework in Frameworks */,
@@ -60,9 +69,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		27B0DA1F1749DB5B005D513A /* WorkerTable */ = {
+			isa = PBXGroup;
+			children = (
+				27C9BB981746BB64005E87E8 /* CTWorkerTableViewController.h */,
+				27C9BB991746BB64005E87E8 /* CTWorkerTableViewController.m */,
+			);
+			name = WorkerTable;
+			sourceTree = "<group>";
+		};
+		27B0DA201749DB8C005D513A /* AddWorker */ = {
+			isa = PBXGroup;
+			children = (
+				27B0DA1B1749CF53005D513A /* CTAddWorkerViewController.h */,
+				27B0DA1C1749CF53005D513A /* CTAddWorkerViewController.m */,
+				27B0DA211749DBC2005D513A /* CTAddWorkerView.h */,
+				27B0DA221749DBC2005D513A /* CTAddWorkerView.m */,
+			);
+			name = AddWorker;
+			sourceTree = "<group>";
+		};
+		27B0DA241749DBDB005D513A /* HoursTable */ = {
+			isa = PBXGroup;
+			children = (
+				27C9BB9F1746BEFD005E87E8 /* CTHoursTableViewController.h */,
+				27C9BBA01746BEFD005E87E8 /* CTHoursTableViewController.m */,
+			);
+			name = HoursTable;
+			sourceTree = "<group>";
+		};
 		27C9BB601746ACC8005E87E8 = {
 			isa = PBXGroup;
 			children = (
+				27B0DA25174A50EE005D513A /* QuartzCore.framework */,
 				27C9BB751746ACC8005E87E8 /* ConTrackter */,
 				27C9BB6E1746ACC8005E87E8 /* Frameworks */,
 				27C9BB6C1746ACC8005E87E8 /* Products */,
@@ -90,16 +129,15 @@
 		27C9BB751746ACC8005E87E8 /* ConTrackter */ = {
 			isa = PBXGroup;
 			children = (
-				27C9BB981746BB64005E87E8 /* CTWorkerTableViewController.h */,
-				27C9BB991746BB64005E87E8 /* CTWorkerTableViewController.m */,
-				27C9BB921746BA70005E87E8 /* CTWorkerModel.h */,
-				27C9BB931746BA70005E87E8 /* CTWorkerModel.m */,
-				27C9BB9F1746BEFD005E87E8 /* CTHoursTableViewController.h */,
-				27C9BBA01746BEFD005E87E8 /* CTHoursTableViewController.m */,
-				27C9BB951746BAEA005E87E8 /* CTShiftModel.h */,
-				27C9BB961746BAEA005E87E8 /* CTShiftModel.m */,
 				27C9BB7E1746ACC8005E87E8 /* CTAppDelegate.h */,
 				27C9BB7F1746ACC8005E87E8 /* CTAppDelegate.m */,
+				27C9BB921746BA70005E87E8 /* CTWorkerModel.h */,
+				27C9BB931746BA70005E87E8 /* CTWorkerModel.m */,
+				27C9BB951746BAEA005E87E8 /* CTShiftModel.h */,
+				27C9BB961746BAEA005E87E8 /* CTShiftModel.m */,
+				27B0DA1F1749DB5B005D513A /* WorkerTable */,
+				27B0DA201749DB8C005D513A /* AddWorker */,
+				27B0DA241749DBDB005D513A /* HoursTable */,
 				27C9BB761746ACC8005E87E8 /* Supporting Files */,
 			);
 			path = ConTrackter;
@@ -191,6 +229,8 @@
 				27C9BB971746BAEA005E87E8 /* CTShiftModel.m in Sources */,
 				27C9BB9A1746BB64005E87E8 /* CTWorkerTableViewController.m in Sources */,
 				27C9BBA11746BEFD005E87E8 /* CTHoursTableViewController.m in Sources */,
+				27B0DA1D1749CF53005D513A /* CTAddWorkerViewController.m in Sources */,
+				27B0DA231749DBC2005D513A /* CTAddWorkerView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,6 +339,7 @@
 				27C9BB8B1746ACC8005E87E8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
