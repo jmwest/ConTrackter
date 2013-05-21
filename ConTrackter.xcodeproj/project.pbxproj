@@ -10,6 +10,10 @@
 		27B0DA1D1749CF53005D513A /* CTAddWorkerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B0DA1C1749CF53005D513A /* CTAddWorkerViewController.m */; };
 		27B0DA231749DBC2005D513A /* CTAddWorkerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B0DA221749DBC2005D513A /* CTAddWorkerView.m */; };
 		27B0DA26174A50EE005D513A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B0DA25174A50EE005D513A /* QuartzCore.framework */; };
+		27B0DA2E174AC080005D513A /* CTShiftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B0DA2D174AC080005D513A /* CTShiftViewController.m */; };
+		27B0DA31174AC097005D513A /* CTShiftView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B0DA30174AC097005D513A /* CTShiftView.m */; };
+		27B0DA34174AC0AB005D513A /* CTAddHoursView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B0DA33174AC0AB005D513A /* CTAddHoursView.m */; };
+		27B0DA3A174AC0DE005D513A /* CTAddHoursViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B0DA39174AC0DE005D513A /* CTAddHoursViewController.m */; };
 		27C9BB701746ACC8005E87E8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27C9BB6F1746ACC8005E87E8 /* UIKit.framework */; };
 		27C9BB721746ACC8005E87E8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27C9BB711746ACC8005E87E8 /* Foundation.framework */; };
 		27C9BB741746ACC8005E87E8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27C9BB731746ACC8005E87E8 /* CoreGraphics.framework */; };
@@ -31,6 +35,14 @@
 		27B0DA211749DBC2005D513A /* CTAddWorkerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTAddWorkerView.h; sourceTree = "<group>"; };
 		27B0DA221749DBC2005D513A /* CTAddWorkerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTAddWorkerView.m; sourceTree = "<group>"; };
 		27B0DA25174A50EE005D513A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		27B0DA2C174AC080005D513A /* CTShiftViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTShiftViewController.h; sourceTree = "<group>"; };
+		27B0DA2D174AC080005D513A /* CTShiftViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTShiftViewController.m; sourceTree = "<group>"; };
+		27B0DA2F174AC097005D513A /* CTShiftView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTShiftView.h; sourceTree = "<group>"; };
+		27B0DA30174AC097005D513A /* CTShiftView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTShiftView.m; sourceTree = "<group>"; };
+		27B0DA32174AC0AB005D513A /* CTAddHoursView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTAddHoursView.h; sourceTree = "<group>"; };
+		27B0DA33174AC0AB005D513A /* CTAddHoursView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTAddHoursView.m; sourceTree = "<group>"; };
+		27B0DA38174AC0DE005D513A /* CTAddHoursViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTAddHoursViewController.h; sourceTree = "<group>"; };
+		27B0DA39174AC0DE005D513A /* CTAddHoursViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTAddHoursViewController.m; sourceTree = "<group>"; };
 		27C9BB6B1746ACC8005E87E8 /* ConTrackter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ConTrackter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27C9BB6F1746ACC8005E87E8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		27C9BB711746ACC8005E87E8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -98,6 +110,28 @@
 			name = HoursTable;
 			sourceTree = "<group>";
 		};
+		27B0DA2A174ABD27005D513A /* AddHours */ = {
+			isa = PBXGroup;
+			children = (
+				27B0DA38174AC0DE005D513A /* CTAddHoursViewController.h */,
+				27B0DA39174AC0DE005D513A /* CTAddHoursViewController.m */,
+				27B0DA32174AC0AB005D513A /* CTAddHoursView.h */,
+				27B0DA33174AC0AB005D513A /* CTAddHoursView.m */,
+			);
+			name = AddHours;
+			sourceTree = "<group>";
+		};
+		27B0DA2B174ABF2B005D513A /* Shift */ = {
+			isa = PBXGroup;
+			children = (
+				27B0DA2C174AC080005D513A /* CTShiftViewController.h */,
+				27B0DA2D174AC080005D513A /* CTShiftViewController.m */,
+				27B0DA2F174AC097005D513A /* CTShiftView.h */,
+				27B0DA30174AC097005D513A /* CTShiftView.m */,
+			);
+			name = Shift;
+			sourceTree = "<group>";
+		};
 		27C9BB601746ACC8005E87E8 = {
 			isa = PBXGroup;
 			children = (
@@ -138,6 +172,8 @@
 				27B0DA1F1749DB5B005D513A /* WorkerTable */,
 				27B0DA201749DB8C005D513A /* AddWorker */,
 				27B0DA241749DBDB005D513A /* HoursTable */,
+				27B0DA2A174ABD27005D513A /* AddHours */,
+				27B0DA2B174ABF2B005D513A /* Shift */,
 				27C9BB761746ACC8005E87E8 /* Supporting Files */,
 			);
 			path = ConTrackter;
@@ -231,6 +267,10 @@
 				27C9BBA11746BEFD005E87E8 /* CTHoursTableViewController.m in Sources */,
 				27B0DA1D1749CF53005D513A /* CTAddWorkerViewController.m in Sources */,
 				27B0DA231749DBC2005D513A /* CTAddWorkerView.m in Sources */,
+				27B0DA2E174AC080005D513A /* CTShiftViewController.m in Sources */,
+				27B0DA31174AC097005D513A /* CTShiftView.m in Sources */,
+				27B0DA34174AC0AB005D513A /* CTAddHoursView.m in Sources */,
+				27B0DA3A174AC0DE005D513A /* CTAddHoursViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

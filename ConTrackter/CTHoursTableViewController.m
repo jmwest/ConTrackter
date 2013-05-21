@@ -7,6 +7,9 @@
 //
 
 #import "CTHoursTableViewController.h"
+#import "CTShiftViewController.h"
+#import "CTWorkerModel.h"
+#import "CTShiftModel.h"
 
 @interface CTHoursTableViewController ()
 
@@ -14,11 +17,12 @@
 
 @implementation CTHoursTableViewController
 
+@synthesize dataToBeAddedToWorkerDataArray = _dataToBeAddedToWorkerDataArray;
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
     if (self) {
-        // Custom initialization
     }
     return self;
 }
@@ -30,8 +34,12 @@
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    UIBarButtonItem *barButtonAdd = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addHoursToCurrentWorker)];
+    self.navigationItem.rightBarButtonItem = barButtonAdd;
+    
+    [self.navigationItem setTitle:@"Hours"];
+    
+    self.dataToBeAddedToWorkerDataArray = [[NSMutableArray alloc] init];
 }
 
 - (void)didReceiveMemoryWarning
@@ -44,24 +52,40 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
+    return [self.dataToBeAddedToWorkerDataArray count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
-    // Configure the cell...
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
+    
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"yyyy/MM/dd"];
+    
+    CTShiftModel *thisShift = [self.dataToBeAddedToWorkerDataArray objectAtIndex:indexPath.row];
+    NSString *thisShiftHours = thisShift.hoursForTheDate;
+    NSString *thisShiftDate = [dateFormat stringFromDate:thisShift.currentDate];
+    NSString *thisShiftDateSubstring = [thisShiftDate substringFromIndex:5];
+
+    if ([[thisShiftDateSubstring substringToIndex:1] isEqualToString:@"0"]) {
+        thisShiftDateSubstring = [thisShiftDateSubstring substringFromIndex:1];
+    }
+
+    NSString *firstTempShiftString = [thisShiftDateSubstring stringByAppendingString:@"\t"];
+    NSString *secondTempShiftString = [firstTempShiftString stringByAppendingString:thisShiftHours];
+    NSString *shiftString = [secondTempShiftString stringByAppendingString:@" hours"];
+    
+    cell.textLabel.text = shiftString;
     
     return cell;
 }
@@ -109,13 +133,27 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+      CTShiftViewController * sVC = [[CTShiftViewController alloc] init];
+     [self.navigationController pushViewController:sVC animated:YES];
+}
+
+- (void)addHoursToCurrentWorker
+{
+    CTAddHoursViewController * aHVC = [[CTAddHoursViewController alloc] init];
+    [aHVC setDelegate:self];
+    [self.navigationController pushViewController:aHVC animated:YES];
+}
+
+- (void)passBackDataMethod:(CTAddHoursViewController *)controller andShiftClass:(CTShiftModel *)shift
+{
+    [self.dataToBeAddedToWorkerDataArray addObject:shift];
+}
+
+- (void)viewWillAppear:(BOOL) animated
+{
+    [super viewWillAppear:animated];
+    
+    [[self tableView] reloadData];
 }
 
 @end

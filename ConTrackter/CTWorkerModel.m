@@ -12,7 +12,7 @@
 
 @synthesize workerNameString = _workerNameString;
 @synthesize workerGradYear = _workerGradYear;
-@synthesize workerHoursArray = _workerHoursArray;
+@synthesize workerDataArray = _workerDataArray;
 
 - (id) initWithName:(NSString *)nameString andYear:(NSInteger *)inGradYear
 {
@@ -20,7 +20,7 @@
     if (self) {
         self.workerNameString = nameString;
         self.workerGradYear = inGradYear;
-        self.workerHoursArray = [[NSMutableArray alloc] init];
+        self.workerDataArray = [[NSMutableArray alloc] init];
     }
     return self;
 }

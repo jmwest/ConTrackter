@@ -43,8 +43,7 @@
         self.addWorkerNameTextField = [[UITextField alloc] initWithFrame:CGRectMake(leftBound, textFieldTopBound, textFieldWidth, labelHeight)];
         [self.addWorkerNameTextField setTextAlignment:NSTextAlignmentCenter];
         [self.addWorkerNameTextField setBackgroundColor:[UIColor whiteColor]];
-        self.addWorkerNameTextField.layer.borderColor = [UIColor blackColor].CGColor;
-        self.addWorkerNameTextField.layer.borderWidth = 1.0f;
+        [self.addWorkerNameTextField setBorderStyle:UITextBorderStyleRoundedRect];
         [self addSubview:self.addWorkerNameTextField];
         
         self.addWorkerYearLabel = [[UILabel alloc] initWithFrame:CGRectMake(leftBound, yearLabelTopBound, labelWidth, labelHeight)];
@@ -54,7 +53,6 @@
         self.addWorkerYearLabel.layer.borderWidth = 1.0f;
         [self addSubview:self.addWorkerYearLabel];
 
-        
     }
     return self;
 }

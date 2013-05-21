@@ -23,8 +23,6 @@
 {
     self = [super initWithStyle:UITableViewStylePlain];
     if (self) {
-     //   [self.tableView setSectionHeaderHeight:50];
-     //   [self.navigationItem initWithTitle:@"Workers"];
     }
     return self;
 }
@@ -64,7 +62,6 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSLog(@"%d", [self.workerInfoArray count]);
     return [self.workerInfoArray count];
 }
 
@@ -72,13 +69,13 @@
 {
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
-    // Configure the cell...
+
     CTWorkerModel *myWorker = [self.workerInfoArray objectAtIndex:indexPath.row];
     cell.textLabel.text = myWorker.workerNameString;
-    
     
     //self.workerNameToAddString = [self.workerInfoArray objectAtIndex:indexPath.row];
     //cell.textLabel.text = self.workerNameToAddString;
@@ -92,13 +89,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+    CTHoursTableViewController *hTVC = [[CTHoursTableViewController alloc] init];
+    [self.navigationController pushViewController:hTVC animated:YES];
 }
 
 - (void)addWorkerNameToArrayControllerMethod
@@ -111,14 +103,6 @@
 - (void)returnWorkerNameMethod:(CTAddWorkerViewController *)controller andWorkerInformationClass:(CTWorkerModel *)workerNameAndGradYear
 {
     [self.workerInfoArray addObject:workerNameAndGradYear];
-    NSLog(@"%d", [self.workerInfoArray count]);
-    [self displayNewWorkerNameInTable];
-}
-
-- (void)displayNewWorkerNameInTable
-{
-   // self.workerNameToAddString = [self.cTWorkerModelHandle.workerNameArray lastObject];
-    
 }
 
 - (void)viewWillAppear:(BOOL) animated
@@ -126,6 +110,11 @@
     [super viewWillAppear:animated];
     
     [[self tableView] reloadData];
+}
+
+- (void)passBackToWorkerTable:(CTHoursTableViewController *)controller theData:(NSMutableArray *)array
+{
+    //[self.workerInfoArray]
 }
 
 @end

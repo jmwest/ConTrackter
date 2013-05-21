@@ -10,4 +10,10 @@
 
 @interface CTShiftModel : NSObject
 
+- (id)initWithHours:(NSString *) hoursForTheDay andDate:(NSDate *) dateForTheDay andNotes:(NSString *) notesForTheDay;
+
+@property (strong, nonatomic) NSString *hoursForTheDate;
+@property (strong, nonatomic) NSString *notesForTheDate;
+@property (strong, nonatomic) NSDate *currentDate;
+
 @end
