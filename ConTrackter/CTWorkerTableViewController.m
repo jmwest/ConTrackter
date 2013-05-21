@@ -75,13 +75,13 @@
     }
 
     CTWorkerModel *myWorker = [self.workerInfoArray objectAtIndex:indexPath.row];
-    cell.textLabel.text = myWorker.workerNameString;
+        
+    NSString *totalHoursString = [NSString stringWithFormat:@"%.2f", myWorker.totalHoursWorked];
     
-    //self.workerNameToAddString = [self.workerInfoArray objectAtIndex:indexPath.row];
-    //cell.textLabel.text = self.workerNameToAddString;
-    //[self.cTWorkerModelHandle.workerNameArray addObject:@"Test"];
-    //cell.textLabel.text = self.workerNameToAddString;
+    NSString *cellDisplayString = [[myWorker.workerNameString stringByAppendingString:@"     "] stringByAppendingString:totalHoursString];
     
+    cell.textLabel.text = cellDisplayString;
+
     return cell;
 }
 
@@ -89,7 +89,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    CTHoursTableViewController *hTVC = [[CTHoursTableViewController alloc] init];
+    CTWorkerModel *workerInfoToPass = [self.workerInfoArray objectAtIndex:indexPath.row];
+    CTHoursTableViewController *hTVC = [[CTHoursTableViewController alloc] initWithWorker:workerInfoToPass];
     [self.navigationController pushViewController:hTVC animated:YES];
 }
 
@@ -105,16 +106,16 @@
     [self.workerInfoArray addObject:workerNameAndGradYear];
 }
 
+- (void)passBackToWorkerTable:(CTHoursTableViewController *)controller theData:(CTWorkerModel *)workerModel
+{
+    [self.workerInfoArray replaceObjectAtIndex:self.currentWorkerIndex withObject:workerModel];
+}
+
 - (void)viewWillAppear:(BOOL) animated
 {
     [super viewWillAppear:animated];
     
     [[self tableView] reloadData];
-}
-
-- (void)passBackToWorkerTable:(CTHoursTableViewController *)controller theData:(NSMutableArray *)array
-{
-    //[self.workerInfoArray]
 }
 
 @end

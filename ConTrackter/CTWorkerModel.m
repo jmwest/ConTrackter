@@ -20,6 +20,7 @@
     if (self) {
         self.workerNameString = nameString;
         self.workerGradYear = inGradYear;
+        self.totalHoursWorked = 0.0;
         self.workerDataArray = [[NSMutableArray alloc] init];
     }
     return self;

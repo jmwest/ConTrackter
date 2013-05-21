@@ -11,12 +11,16 @@
 @interface CTAddHoursView : UIView
 
 @property (strong, nonatomic) UILabel *workerNameLabel;
-@property (strong, nonatomic) UITextView *workerNameTextLocked;
+@property (strong, nonatomic) UILabel *workerNameTextLocked;
 @property (strong, nonatomic) UILabel *dateLabel;
 @property (strong, nonatomic) UIDatePicker *dateWorkedPickerBox;
 @property (strong, nonatomic) UILabel *hoursLabel;
 @property (strong, nonatomic) UITextField *addHoursTextField;
 @property (strong, nonatomic) UILabel *notesLabel;
 @property (strong, nonatomic) UITextField *notesTextField;
+
+@property (strong, nonatomic) NSString *name;
+
+- (id)initWithNameFromController:(NSString *) nameFromController;
 
 @end

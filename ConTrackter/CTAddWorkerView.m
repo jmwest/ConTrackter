@@ -9,7 +9,7 @@
 #import "CTAddWorkerView.h"
 #import <QuartzCore/QuartzCore.h>
 #define leftBound 40
-#define labelWidth 80
+#define labelWidth 100
 #define labelHeight 24
 #define textFieldWidth 260
 #define textFieldTopBound 70
@@ -18,18 +18,15 @@
 
 @implementation CTAddWorkerView
 
-@synthesize addWorkerWindow = _addWorkerWindow;
 @synthesize addWorkerNameLabel = _addWorkerNameLabel;
 @synthesize addWorkerNameTextField = _addWorkerNameTextField;
 @synthesize addWorkerYearLabel = _addWorkerYearLabel;
+@synthesize addWorkerYearPicker = _addWorkerYearPicker;
 
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
-        //self.addWorkerWindow = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-        //self.addWorkerWindow.backgroundColor = [UIColor magentaColor];
-        //self.addWorkerWindow.rootViewController = self.
         
         [self setBackgroundColor:[UIColor magentaColor]];
         
@@ -47,11 +44,13 @@
         [self addSubview:self.addWorkerNameTextField];
         
         self.addWorkerYearLabel = [[UILabel alloc] initWithFrame:CGRectMake(leftBound, yearLabelTopBound, labelWidth, labelHeight)];
-        [self.addWorkerYearLabel setText:@"Year"];
+        [self.addWorkerYearLabel setText:@"Grad Year"];
         [self.addWorkerYearLabel setTextAlignment:NSTextAlignmentCenter];
         self.addWorkerYearLabel.layer.borderColor = [UIColor blackColor].CGColor;
         self.addWorkerYearLabel.layer.borderWidth = 1.0f;
         [self addSubview:self.addWorkerYearLabel];
+        
+        
 
     }
     return self;

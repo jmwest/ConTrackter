@@ -7,7 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CTShiftView.h"
+
+@class CTShiftModel;
 
 @interface CTShiftViewController : UIViewController
+
+@property (strong, nonatomic) CTShiftView *view;
+
+@property (strong, nonatomic) CTShiftModel *myWorkerShift;
+
+- (id)initWIthAllWorkerInfo:(CTShiftModel *) workerShift;
 
 @end

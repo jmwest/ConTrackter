@@ -14,7 +14,7 @@
 
 @protocol CTAddHoursViewDelegate <NSObject>
 
-- (void) passBackDataMethod:(CTAddHoursViewController *) controller andShiftClass:(CTShiftModel *) shift;
+- (void) passBackDataFromAddHoursMethod:(CTAddHoursViewController *) controller andShiftClass:(CTShiftModel *) shift;
 
 @end
 
@@ -22,6 +22,9 @@
 
 @property (strong, nonatomic) CTAddHoursView *view;
 @property (weak, nonatomic) id <CTAddHoursViewDelegate> delegate;
+@property (strong, nonatomic) NSString *nameToDisplay;
 
+- (id)initWithWorkerName:(NSString *)name;
 - (void)saveAndSendDataToTable;
+
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "CTShiftViewController.h"
+#import "CTShiftModel.h"
 
 @interface CTShiftViewController ()
 
@@ -14,25 +15,26 @@
 
 @implementation CTShiftViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    self.view = [[CTShiftView alloc] initWithWorkerInformation:self.myWorkerShift];
+    [self.navigationController setTitle:@"Shift"];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (id)initWIthAllWorkerInfo:(CTShiftModel *)workerShift
+{
+    self = [super init];
+    if (self) {
+        self.myWorkerShift = workerShift;
+    }
+    return self;
 }
 
 @end

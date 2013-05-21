@@ -35,7 +35,9 @@
 {
     if ([self.view.addWorkerNameTextField.text length] == 0)
     {
-        
+        UIAlertView *incorrectNameAlert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Invalid Entry For Worker Name. Please Enter Valid Worker Name." delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles: nil];
+        [self.view.addWorkerNameTextField setBackgroundColor:[UIColor yellowColor]];
+        [incorrectNameAlert show];
     }
     else
     {

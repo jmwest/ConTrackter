@@ -9,18 +9,18 @@
 #import "CTAddHoursView.h"
 #import <QuartzCore/QuartzCore.h>
 #define leftBound 40
-#define labelWidth 80
+#define labelWidth 100
 #define labelHeight 24
 #define textFieldWidth 260
 #define workerNameLabelTopBound 20
-#define workerNameTextLockedTopBound 60
+#define workerNameTextLockedTopBound 50
 #define dateLabelTopBound 100
-#define datePickerTopBound 140
+#define datePickerTopBound 130
 #define hoursLabelTopBound 180
-#define hoursTextBoxTopBound 220
+#define hoursTextBoxTopBound 210
 #define notesLabelTopBound 260
-#define notesTextTopBound 300
-#define notesFieldHeight 96
+#define notesTextTopBound 290
+#define notesFieldHeight 106
 
 @implementation CTAddHoursView
 
@@ -32,6 +32,8 @@
 @synthesize addHoursTextField = _addHoursTextField;
 @synthesize notesLabel = _notesLabel;
 @synthesize notesTextField = _notesTextField;
+
+@synthesize name = _name;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -47,11 +49,10 @@
         self.workerNameLabel.layer.borderWidth = 1.0f;
         [self addSubview:self.workerNameLabel];
         
-        self.workerNameTextLocked = [[UITextView alloc] initWithFrame:CGRectMake(leftBound, workerNameTextLockedTopBound, textFieldWidth, labelHeight)];
+        self.workerNameTextLocked = [[UILabel alloc] initWithFrame:CGRectMake(leftBound, workerNameTextLockedTopBound, textFieldWidth, labelHeight)];
         [self.workerNameTextLocked setBackgroundColor:[UIColor whiteColor]];
-        [self.workerNameTextLocked setEditable:NO];
-        //[self.workerNameTextLocked setText:@"Worker"];
         [self.workerNameTextLocked setTextAlignment:NSTextAlignmentCenter];
+
         self.workerNameTextLocked.layer.borderColor = [UIColor blackColor].CGColor;
         self.workerNameTextLocked.layer.borderWidth = 1.0f;
         [self addSubview:self.workerNameTextLocked];
@@ -94,10 +95,22 @@
         
         self.notesTextField = [[UITextField alloc] initWithFrame:CGRectMake(leftBound, notesTextTopBound, textFieldWidth, notesFieldHeight)];
         [self.notesTextField setBackgroundColor:[UIColor whiteColor]];
-        [self.notesTextField setTextAlignment:NSTextAlignmentRight];
+        [self.notesTextField setTextAlignment:NSTextAlignmentLeft];
         [self.notesTextField setBorderStyle:UITextBorderStyleRoundedRect];
         [self addSubview:self.notesTextField];
     }
+    return self;
+}
+
+- (id)initWithNameFromController:(NSString *)nameFromController
+{
+    self = [super init];
+    if (self)
+    {
+        self.name = nameFromController;
+        [self.workerNameTextLocked setText:self.name];
+    }
+    
     return self;
 }
 

@@ -14,7 +14,7 @@
 
 @property (strong, nonatomic) NSString *workerNameString;
 @property (assign, nonatomic) NSInteger *workerGradYear;
+@property (assign, nonatomic) CGFloat totalHoursWorked;
 @property (strong, nonatomic) NSMutableArray *workerDataArray;
-
 
 @end

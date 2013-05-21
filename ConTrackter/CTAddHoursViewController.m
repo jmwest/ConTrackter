@@ -13,11 +13,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.view = [[CTAddHoursView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];
+    self.view = [[CTAddHoursView alloc] initWithNameFromController: self.nameToDisplay];
     UIBarButtonItem *barButtonSave = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(saveAndSendDataToTable)];
     self.navigationItem.rightBarButtonItem = barButtonSave;
     [self.navigationItem setTitle:@"Add Worker"];
-    
+
     [self.view.addHoursTextField setDelegate:self];
     [self.view.notesTextField setDelegate:self];
 }
@@ -40,14 +40,21 @@
 
 - (void)saveAndSendDataToTable
 {
-    if ([self.view.addHoursTextField.text length] != 0) {
+    if ([self.view.addHoursTextField.text integerValue] == 0) {
+        UIAlertView *incorrectHoursAlert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Invalid Entry For Shift Hours. Please Enter Valid Number Of Hours." delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles: nil];
+        [self.view.addHoursTextField setBackgroundColor:[UIColor yellowColor]];
+        [incorrectHoursAlert show];
+    }
+    else if ([self.view.addHoursTextField.text length] != 0) {
         NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
         [dateFormat setDateFormat:@"yyyy/MM/dd"];
         
         NSDate *today = [[NSDate alloc] init];
+        
+        
                 
         CTShiftModel *acquiredDataForDate = [[CTShiftModel alloc] initWithHours:self.view.addHoursTextField.text andDate: today andNotes:self.view.notesTextField.text];
-        [self.delegate passBackDataMethod:self andShiftClass:acquiredDataForDate];
+        [self.delegate passBackDataFromAddHoursMethod:self andShiftClass:acquiredDataForDate];
         [self.navigationController popViewControllerAnimated:YES];
     }
 }
@@ -57,6 +64,16 @@
     [self.view.notesTextField resignFirstResponder];
     [self.view.addHoursTextField resignFirstResponder];
     return NO;
+}
+
+- (id)initWithWorkerName:(NSString *)name
+{
+    self = [super init];
+    if (self)
+    {
+        self.nameToDisplay = name;
+    }
+    return self;
 }
 
 @end

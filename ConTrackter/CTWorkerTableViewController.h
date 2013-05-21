@@ -14,6 +14,8 @@
 
 @property (strong, nonatomic) NSMutableArray *workerInfoArray;
 @property (strong, nonatomic) NSString *workerNameToAddString;
+@property (assign, nonatomic) NSInteger currentWorkerIndex;
+
 - (void)addWorkerNameToArrayControllerMethod;
 
 @end

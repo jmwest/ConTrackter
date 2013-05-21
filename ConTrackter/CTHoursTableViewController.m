@@ -17,12 +17,24 @@
 
 @implementation CTHoursTableViewController
 
-@synthesize dataToBeAddedToWorkerDataArray = _dataToBeAddedToWorkerDataArray;
+@synthesize hoursWorkerModel = _hoursWorkerModel;
+@synthesize totalHoursWorked = _totalHoursWorked;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
     if (self) {
+    }
+    return self;
+}
+
+- (id)initWithWorker:(CTWorkerModel *)worker
+{
+    self = [super init];
+    if (self)
+    {
+        self.totalHoursWorked = 0.0;
+        self.hoursWorkerModel = worker;
     }
     return self;
 }
@@ -35,17 +47,15 @@
     // self.clearsSelectionOnViewWillAppear = NO;
  
     UIBarButtonItem *barButtonAdd = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addHoursToCurrentWorker)];
+    [self.navigationItem.backBarButtonItem setAction:@selector(backToWorkerTable)];
     self.navigationItem.rightBarButtonItem = barButtonAdd;
     
     [self.navigationItem setTitle:@"Hours"];
-    
-    self.dataToBeAddedToWorkerDataArray = [[NSMutableArray alloc] init];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Table view data source
@@ -57,7 +67,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.dataToBeAddedToWorkerDataArray count];
+    return [self.hoursWorkerModel.workerDataArray count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -72,7 +82,7 @@
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateFormat:@"yyyy/MM/dd"];
     
-    CTShiftModel *thisShift = [self.dataToBeAddedToWorkerDataArray objectAtIndex:indexPath.row];
+    CTShiftModel *thisShift = [self.hoursWorkerModel.workerDataArray objectAtIndex:indexPath.row];
     NSString *thisShiftHours = thisShift.hoursForTheDate;
     NSString *thisShiftDate = [dateFormat stringFromDate:thisShift.currentDate];
     NSString *thisShiftDateSubstring = [thisShiftDate substringFromIndex:5];
@@ -81,9 +91,9 @@
         thisShiftDateSubstring = [thisShiftDateSubstring substringFromIndex:1];
     }
 
-    NSString *firstTempShiftString = [thisShiftDateSubstring stringByAppendingString:@"\t"];
+    NSString *firstTempShiftString = [thisShiftDateSubstring stringByAppendingString:@"\t\t"];
     NSString *secondTempShiftString = [firstTempShiftString stringByAppendingString:thisShiftHours];
-    NSString *shiftString = [secondTempShiftString stringByAppendingString:@" hours"];
+    NSString *shiftString = [secondTempShiftString stringByAppendingString:@" Hours"];
     
     cell.textLabel.text = shiftString;
     
@@ -129,24 +139,29 @@
 }
 */
 
-#pragma mark - Table view delegate
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-      CTShiftViewController * sVC = [[CTShiftViewController alloc] init];
-     [self.navigationController pushViewController:sVC animated:YES];
+    CTShiftViewController * sVC = [[CTShiftViewController alloc] initWIthAllWorkerInfo:[self.hoursWorkerModel.workerDataArray objectAtIndex:indexPath.row]];
+    [self.navigationController pushViewController:sVC animated:YES];
 }
 
 - (void)addHoursToCurrentWorker
 {
-    CTAddHoursViewController * aHVC = [[CTAddHoursViewController alloc] init];
+    CTAddHoursViewController * aHVC = [[CTAddHoursViewController alloc] initWithWorkerName:self.hoursWorkerModel.workerNameString];
     [aHVC setDelegate:self];
     [self.navigationController pushViewController:aHVC animated:YES];
 }
 
-- (void)passBackDataMethod:(CTAddHoursViewController *)controller andShiftClass:(CTShiftModel *)shift
+- (void)passBackDataFromAddHoursMethod:(CTAddHoursViewController *)controller andShiftClass:(CTShiftModel *)shift
 {
-    [self.dataToBeAddedToWorkerDataArray addObject:shift];
+    [self.hoursWorkerModel.workerDataArray addObject:shift];
+    double hoursWorkedThisShift = [shift.hoursForTheDate doubleValue];
+    self.hoursWorkerModel.totalHoursWorked = self.hoursWorkerModel.totalHoursWorked + hoursWorkedThisShift;
+}
+
+- (void)backToWorkerTable
+{
+    [self.delegate passBackToWorkerTable:self theData:self.hoursWorkerModel];
 }
 
 - (void)viewWillAppear:(BOOL) animated

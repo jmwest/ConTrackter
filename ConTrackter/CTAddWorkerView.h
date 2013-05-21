@@ -10,9 +10,9 @@
 
 @interface CTAddWorkerView : UIView
 
-@property (strong, nonatomic) UIWindow *addWorkerWindow;
 @property (strong, nonatomic) UILabel *addWorkerNameLabel;
 @property (strong, nonatomic) UILabel *addWorkerYearLabel;
 @property (strong, nonatomic) UITextField *addWorkerNameTextField;
+@property (strong, nonatomic) UIPickerView *addWorkerYearPicker;
 
 @end
