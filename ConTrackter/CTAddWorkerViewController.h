@@ -18,10 +18,18 @@
 
 @end
 
-@interface CTAddWorkerViewController : UIViewController <UITextFieldDelegate>
+
+
+@interface CTAddWorkerViewController : UIViewController <UITextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate>
+
+- (id)initWithYearArray:(NSArray *) array;
 
 @property (strong, nonatomic) CTAddWorkerView *view;
 @property (weak, nonatomic) id <CTAddWorkerViewControlDelegate> delegate;
+@property (assign, nonatomic) NSInteger selectedYear;
+@property (strong, nonatomic) NSArray *yearArray;
+
+
 - (void) saveAndSendWorkerNameToTable;
 
 @end

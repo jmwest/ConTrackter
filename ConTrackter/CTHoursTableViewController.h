@@ -23,6 +23,7 @@
 @property (weak, nonatomic) id<CTHoursTableDelegate> delegate;
 @property (strong, nonatomic) CTWorkerModel *hoursWorkerModel;
 @property (assign, nonatomic) CGFloat totalHoursWorked;
+@property (strong, nonatomic) NSString *stringToPassDate;
 
 - (id)initWithWorker:(CTWorkerModel *)worker;
 - (void)addHoursToCurrentWorker;

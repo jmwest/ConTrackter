@@ -14,6 +14,17 @@
 
 @implementation CTAddWorkerViewController
 
+@synthesize yearArray = _yearArray;
+
+- (id)initWithYearArray:(NSArray *)array
+{
+    self = [super init];
+    if (self) {
+        
+    }
+    return self;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -22,6 +33,10 @@
     self.navigationItem.rightBarButtonItem = barButtonSave;
     [self.navigationItem setTitle:@"Add Worker"];
     
+    self.yearArray = [[NSArray alloc] initWithObjects:@"2011", @"2012", @"2013",@"2014",@"2015",@"2016", nil];
+    
+    [self.view.addWorkerYearPicker setShowsSelectionIndicator:YES];
+    [self.view.addWorkerYearPicker setDelegate:self];
     [self.view.addWorkerNameTextField setDelegate:self];
 }
 
@@ -41,7 +56,7 @@
     }
     else
     {
-        CTWorkerModel *acquiredNameAndYear = [[CTWorkerModel alloc] initWithName:self.view.addWorkerNameTextField.text andYear: (NSInteger *) 2016];
+        CTWorkerModel *acquiredNameAndYear = [[CTWorkerModel alloc] initWithName:self.view.addWorkerNameTextField.text andYear:self.selectedYear];
         [self.delegate returnWorkerNameMethod:self andWorkerInformationClass:acquiredNameAndYear];
         
         [self.navigationController popViewControllerAnimated:YES];
@@ -52,6 +67,26 @@
 {
     [self.view.addWorkerNameTextField resignFirstResponder];
     return NO;
+}
+
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
+{
+    return 1;
+}
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+{
+    return [self.yearArray count];
+}
+
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+    return [self.yearArray objectAtIndex:row];
+}
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
+{
+    self.selectedYear = [[self.yearArray objectAtIndex:row] integerValue];
 }
 
 @end

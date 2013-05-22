@@ -14,7 +14,7 @@
 @synthesize workerGradYear = _workerGradYear;
 @synthesize workerDataArray = _workerDataArray;
 
-- (id) initWithName:(NSString *)nameString andYear:(NSInteger *)inGradYear
+- (id) initWithName:(NSString *)nameString andYear:(NSInteger)inGradYear
 {
     self = [super init];
     if (self) {

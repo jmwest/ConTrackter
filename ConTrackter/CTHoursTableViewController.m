@@ -19,6 +19,7 @@
 
 @synthesize hoursWorkerModel = _hoursWorkerModel;
 @synthesize totalHoursWorked = _totalHoursWorked;
+@synthesize stringToPassDate = _stringToPassDate;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -80,16 +81,21 @@
     }
     
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-    [dateFormat setDateFormat:@"yyyy/MM/dd"];
+    [dateFormat setDateFormat:@"MM/dd/yyyy"];
     
     CTShiftModel *thisShift = [self.hoursWorkerModel.workerDataArray objectAtIndex:indexPath.row];
     NSString *thisShiftHours = thisShift.hoursForTheDate;
+    //NSDate *date = thisShift.currentDate;
+    
+    
     NSString *thisShiftDate = [dateFormat stringFromDate:thisShift.currentDate];
-    NSString *thisShiftDateSubstring = [thisShiftDate substringFromIndex:5];
+    NSString *thisShiftDateSubstring = [thisShiftDate substringToIndex:5];
 
     if ([[thisShiftDateSubstring substringToIndex:1] isEqualToString:@"0"]) {
         thisShiftDateSubstring = [thisShiftDateSubstring substringFromIndex:1];
     }
+    
+    self.stringToPassDate = thisShiftDateSubstring;
 
     NSString *firstTempShiftString = [thisShiftDateSubstring stringByAppendingString:@"\t\t"];
     NSString *secondTempShiftString = [firstTempShiftString stringByAppendingString:thisShiftHours];
@@ -141,7 +147,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    CTShiftViewController * sVC = [[CTShiftViewController alloc] initWIthAllWorkerInfo:[self.hoursWorkerModel.workerDataArray objectAtIndex:indexPath.row]];
+    CTShiftViewController *sVC = [[CTShiftViewController alloc] initWithAllWorkerInfo:[self.hoursWorkerModel.workerDataArray objectAtIndex:indexPath.row] andDateAsString:self.stringToPassDate];
+    
     [self.navigationController pushViewController:sVC animated:YES];
 }
 

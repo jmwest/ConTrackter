@@ -16,7 +16,8 @@
 @property (strong, nonatomic) CTShiftView *view;
 
 @property (strong, nonatomic) CTShiftModel *myWorkerShift;
+@property (strong, nonatomic) NSString *dateString;
 
-- (id)initWIthAllWorkerInfo:(CTShiftModel *) workerShift;
+- (id)initWithAllWorkerInfo:(CTShiftModel *) workerShift andDateAsString:(NSString *) dateString;
 
 @end

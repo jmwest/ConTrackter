@@ -19,6 +19,8 @@
 @property (strong, nonatomic) UILabel *notesLabel;
 @property (strong, nonatomic) UITextField *notesTextField;
 
+@property (strong, nonatomic) UIButton *showDatePickerBox;
+
 @property (strong, nonatomic) NSString *name;
 
 - (id)initWithNameFromController:(NSString *) nameFromController;

@@ -9,6 +9,8 @@
 #import "CTShiftView.h"
 #import "CTShiftModel.h"
 #import <QuartzCore/QuartzCore.h>
+#define DATE_LEFT_BOUND 80
+#define DATE_WIDTH 180
 #define leftBound 120
 #define labelWidth 100
 #define labelHeight 24
@@ -28,7 +30,7 @@
     if (self) {
         [self setBackgroundColor:[UIColor magentaColor]];
         
-        self.shiftDateLabel = [[UILabel alloc] initWithFrame:CGRectMake(leftBound, shiftDateLabelTopBound, labelWidth, labelHeight)];
+        self.shiftDateLabel = [[UILabel alloc] initWithFrame:CGRectMake(DATE_LEFT_BOUND, shiftDateLabelTopBound, DATE_WIDTH, labelHeight)];
         [self.shiftDateLabel setBackgroundColor:[UIColor magentaColor]];
         [self.shiftDateLabel setTextAlignment:NSTextAlignmentCenter];
         //self.shiftDateLabel.layer.borderColor = [UIColor blackColor].CGColor;
@@ -62,14 +64,17 @@
     return self;
 }
 
-- (id)initWithWorkerInformation:(CTShiftModel *)worker
+- (id)initWithWorkerInformation:(CTShiftModel *)worker andADateString:(NSString *)string
 {
     self = [super init];
     if (self) {
+        NSDateFormatter *weekdayFormat = [[NSDateFormatter alloc] init];
+        [weekdayFormat setDateFormat:@"EEEE"];
+        NSString *weekday = [weekdayFormat stringFromDate:worker.currentDate];
+        
         NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
         [dateFormat setDateFormat:@"yyyy/MM/dd"];
         NSString *dateString = [dateFormat stringFromDate:worker.currentDate];
-        
         
         NSString *thisDateSubstring = [dateString substringFromIndex:5];
         
@@ -77,10 +82,15 @@
             thisDateSubstring = [thisDateSubstring substringFromIndex:1];
         }
         
+        NSString *dateStringToDisplay = [[weekday stringByAppendingString:@", "] stringByAppendingString:thisDateSubstring];
+        
         NSString *theseHoursString = [worker.hoursForTheDate stringByAppendingString:@" Hours"];
-        NSString *appendedNotesString =[@"  " stringByAppendingString:worker.notesForTheDate];
+        NSString *appendedNotesString = @"  ";
+        if ([worker.notesForTheDate length] != 0) {
+            appendedNotesString =[appendedNotesString stringByAppendingString:worker.notesForTheDate];
+        }
 
-        [self.shiftDateLabel setText:thisDateSubstring];
+        [self.shiftDateLabel setText:dateStringToDisplay];
         [self.shiftHoursLabel setText:theseHoursString];
         [self.shiftNotesDisplayLabel setText:appendedNotesString];
     }

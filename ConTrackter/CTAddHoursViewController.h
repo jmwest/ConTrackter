@@ -23,8 +23,12 @@
 @property (strong, nonatomic) CTAddHoursView *view;
 @property (weak, nonatomic) id <CTAddHoursViewDelegate> delegate;
 @property (strong, nonatomic) NSString *nameToDisplay;
+@property (strong, nonatomic) NSDate *dateToDisplay;
+@property (assign, nonatomic) NSInteger pickerIsShowing;
 
 - (id)initWithWorkerName:(NSString *)name;
 - (void)saveAndSendDataToTable;
+
+- (IBAction)popUpDatePickerBox:(id)sender;
 
 @end

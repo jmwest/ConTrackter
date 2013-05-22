@@ -18,7 +18,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.view = [[CTShiftView alloc] initWithWorkerInformation:self.myWorkerShift];
+    self.view = [[CTShiftView alloc] initWithWorkerInformation:self.myWorkerShift andADateString:self.dateString];
     [self.navigationController setTitle:@"Shift"];
 }
 
@@ -28,11 +28,12 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (id)initWIthAllWorkerInfo:(CTShiftModel *)workerShift
+- (id)initWithAllWorkerInfo:(CTShiftModel *)workerShift andDateAsString:(NSString *)dateString
 {
     self = [super init];
     if (self) {
         self.myWorkerShift = workerShift;
+        self.dateString = dateString;
     }
     return self;
 }

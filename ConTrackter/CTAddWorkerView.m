@@ -15,6 +15,7 @@
 #define textFieldTopBound 70
 #define yearLabelTopBound 120
 #define workerLabelTopBound 20
+#define yearPickerTopBound 170
 
 @implementation CTAddWorkerView
 
@@ -51,6 +52,9 @@
         [self addSubview:self.addWorkerYearLabel];
         
         
+        self.addWorkerYearPicker = [[UIPickerView alloc] initWithFrame:CGRectMake(leftBound, yearPickerTopBound, textFieldWidth, 140)];
+        [self.addWorkerYearPicker setBackgroundColor:[UIColor whiteColor]];
+        [self addSubview:self.addWorkerYearPicker];
 
     }
     return self;

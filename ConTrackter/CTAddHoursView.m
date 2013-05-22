@@ -21,6 +21,10 @@
 #define notesLabelTopBound 260
 #define notesTextTopBound 290
 #define notesFieldHeight 106
+#define LEFT_BOUNDARY 0
+#define TOP_BOUNDARY 180
+#define VIEW_WIDTH 320
+#define VIEW_HEIGHT 218
 
 @implementation CTAddHoursView
 
@@ -33,12 +37,15 @@
 @synthesize notesLabel = _notesLabel;
 @synthesize notesTextField = _notesTextField;
 
+@synthesize showDatePickerBox = _showDatePickerBox;
+
 @synthesize name = _name;
 
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
+        
         [self setBackgroundColor:[UIColor magentaColor]];
         
         self.workerNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(leftBound, workerNameLabelTopBound, labelWidth, labelHeight)];
@@ -64,12 +71,15 @@
         self.dateLabel.layer.borderColor = [UIColor blackColor].CGColor;
         self.dateLabel.layer.borderWidth = 1.0f;
         [self addSubview:self.dateLabel];
-        
-        self.dateWorkedPickerBox = [[UIDatePicker alloc] initWithFrame:CGRectMake(leftBound, datePickerTopBound, labelWidth, labelHeight)];
+
+        self.dateWorkedPickerBox = [[UIDatePicker alloc] initWithFrame:CGRectMake(LEFT_BOUNDARY, TOP_BOUNDARY, VIEW_WIDTH, VIEW_HEIGHT)];
+        self.dateWorkedPickerBox.datePickerMode = UIDatePickerModeDate;
         [self.dateWorkedPickerBox setBackgroundColor:[UIColor whiteColor]];
-        self.dateWorkedPickerBox.layer.borderColor = [UIColor blackColor].CGColor;
-        self.dateWorkedPickerBox.layer.borderWidth = 1.0f;
-        //[self addSubview:self.dateWorkedPickerBox];
+        
+     /*   self.dateWorkedPickerBox = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, datePickerTopBound, 320, 80)];
+        self.dateWorkedPickerBox.datePickerMode = UIDatePickerModeDate;
+        [self.dateWorkedPickerBox setBackgroundColor:[UIColor whiteColor]];
+        [self addSubview:self.dateWorkedPickerBox]; */
         
         self.hoursLabel = [[UILabel alloc] initWithFrame:CGRectMake(leftBound, hoursLabelTopBound, labelWidth, labelHeight)];
         [self.hoursLabel setBackgroundColor:[UIColor whiteColor]];
@@ -98,6 +108,11 @@
         [self.notesTextField setTextAlignment:NSTextAlignmentLeft];
         [self.notesTextField setBorderStyle:UITextBorderStyleRoundedRect];
         [self addSubview:self.notesTextField];
+        
+        self.showDatePickerBox = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        [self.showDatePickerBox setFrame:CGRectMake(leftBound, datePickerTopBound, labelWidth, labelHeight)];
+        [self.showDatePickerBox setTitle:@"" forState:UIControlStateNormal];
+        [self addSubview:self.showDatePickerBox];
     }
     return self;
 }

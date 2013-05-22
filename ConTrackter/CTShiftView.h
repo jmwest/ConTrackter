@@ -17,6 +17,6 @@
 @property (strong, nonatomic) UILabel *shiftNotesLabel;
 @property (strong, nonatomic) UILabel *shiftNotesDisplayLabel;
 
-- (id)initWithWorkerInformation:(CTShiftModel *) worker;
+- (id)initWithWorkerInformation:(CTShiftModel *) worker andADateString:(NSString *) string;
 
 @end
